@@ -25,4 +25,8 @@ jobs:
       run: npm install
 
     - name: Run tests
-      run: npm test
+      run: npm test -- --verbose
+    
+    - name: List files
+      run: ls -R
+
