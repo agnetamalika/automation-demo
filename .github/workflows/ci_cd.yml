@@ -1,14 +1,12 @@
-name: CI/CD Demo
+name: CI/CD Demo Windows
 
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
 
 jobs:
   build-and-test:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - name: Checkout repository
@@ -27,8 +25,8 @@ jobs:
 
       - name: Build project
         run: |
-          mkdir -p dist
-          cp -r __tests__ dist/  # contoh copy file sebagai artifact
+          New-Item -ItemType Directory -Path dist
+          Copy-Item -Recurse -Path __tests__ -Destination dist
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
