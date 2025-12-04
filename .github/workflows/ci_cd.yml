@@ -29,7 +29,7 @@ jobs:
           Copy-Item -Recurse -Path __tests__ -Destination dist
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build-artifact
           path: dist/
