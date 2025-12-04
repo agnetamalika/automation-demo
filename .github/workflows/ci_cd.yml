@@ -23,10 +23,11 @@ jobs:
       - name: Run Jest tests
         run: npm test -- --verbose
 
-      - name: Build project
+      - name: Build project (copy tests folder)
         run: |
-          New-Item -ItemType Directory -Path dist
-          Copy-Item -Recurse -Path __tests__ -Destination dist
+          New-Item -ItemType Directory -Path dist -Force
+          Copy-Item -Recurse -Path "./tests" -Destination "./dist" -ErrorAction SilentlyContinue
+          dir dist
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
